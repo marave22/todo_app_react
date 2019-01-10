@@ -1,23 +1,33 @@
 import React from 'react';
-
+import TodoItem from './TodoItem.js';
+import '../App.css';
 
 const todoList = ( props ) => {
-    return (
-        <div>
-            <ul>
-                {props.items.map((item, index) => {
-                    return <li key={index}>
-                        <input
-                            checked={props.done}
-                            onChange={props.change}
-                            type="checkbox"/>
-                        {item}
-                        <a href="#" onClick={ props.delete }>[X]</a>
-                    </li>
-                })}
-            </ul>
-        </div>
-    );
+   return (
+      <div id="todo-list">
+         <ul>
+          { props.todos.map((todo, i) => {
+             return (
+
+                <section id="main" key={todo.title}>
+
+               <TodoItem
+                     value={props.value}
+                     todo={todo}
+                     handleDone={props.handleDone}
+                     handleDelete={props.handleDelete}
+                     handleEdit={props.handleedit}
+                     handleEditDone={props.handleeditdone} />
+
+               </section>
+
+
+               )
+            }) }
+         </ul>
+         
+      </div>
+   )
 };
 
 export default todoList;
